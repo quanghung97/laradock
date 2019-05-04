@@ -17,6 +17,8 @@ RUN npm install
 
 # Bundle app source
 COPY laravel-echo-server.json /usr/src/app/laravel-echo-server.json
+COPY domain.crt /usr/src/app/domain.crt
+COPY domain.key /usr/src/app/domain.key
 
 EXPOSE 3000
 CMD [ "npm", "start" ]

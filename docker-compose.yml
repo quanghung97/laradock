@@ -244,8 +244,13 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+        backend:
+            aliases:
+              - laravel1.test
+              - testapp.test
+              - firsttraining.test
+              - service.test
 
 ### Blackfire ########################################
     blackfire:

@@ -1,7 +1,6 @@
 .idea
 /logs
 /data
-.env
 /.project
 .docker-sync
 /jenkins/jenkins_home
@@ -12,3 +11,7 @@
 /nginx/ssl/*.crt
 /nginx/ssl/*.key
 /nginx/ssl/*.csr
+
+/laravel-echo-server/node_modules
+/laravel-echo-server/*.crt
+/laravel-echo-server/*.key
