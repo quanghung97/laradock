@@ -8,10 +8,4 @@
 /logstash/pipeline/*.conf
 /logstash/config/pipelines.yml
 
-/nginx/ssl/*.crt
-/nginx/ssl/*.key
-/nginx/ssl/*.csr
-
 /laravel-echo-server/node_modules
-/laravel-echo-server/*.crt
-/laravel-echo-server/*.key
