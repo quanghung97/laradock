@@ -251,6 +251,7 @@ services:
               - testapp.test
               - firsttraining.test
               - service.test
+              - teacher.test
 
 ### Blackfire ########################################
     blackfire:

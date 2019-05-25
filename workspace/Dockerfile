@@ -626,20 +626,29 @@ RUN set -xe; \
 
 USER root
 
-ARG INSTALL_V8JS=false
+ARG INSTALL_V8JS=true
 
 RUN set -xe; \
   if [ ${INSTALL_V8JS} = true ]; then \
-    add-apt-repository -y ppa:pinepain/libv8-archived \
-    && apt-get update -yqq \
-    && apt-get install -y libv8-5.4 && \
-    if [ $(php -r "echo PHP_MAJOR_VERSION;") = "5" ]; then \
-      pecl install v8js-0.6.4; \
-    else \
-      pecl install v8js; \
-    fi \
-    && echo "extension=v8js.so" >> /etc/php/${LARADOCK_PHP_VERSION}/cli/php.ini \
-    && php -m | grep -q 'v8js' \
+    apt-get install build-essential curl git python libglib2.0-dev \
+    # cd /tmp \
+    # git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
+    # export PATH=`pwd`/depot_tools:"$PATH" \
+    # fetch v8 \
+    # cd v8 \
+    # git checkout 6.4.388.18 \
+    # gclient sync \
+    # tools/dev/v8gen.py -vv x64.release -- is_component_build=true \
+    # ninja -C out.gn/x64.release/ \
+    # mkdir -p /opt/v8/{lib,include} \
+    # cp out.gn/x64.release/lib*.so out.gn/x64.release/*_blob.bin \
+    # cp out.gn/x64.release/icudtl.dat /opt/v8/lib/ \
+    # cp -R include/* /opt/v8/include/ \
+    # apt-get install patchelf \
+    && add-apt-repository ppa:pinepain/libv8-5.2 \
+    && apt-get update \
+    && apt-get install libv8-5.2 \
+    && pecl install v8js \
   ;fi
 
 ###########################################################################
